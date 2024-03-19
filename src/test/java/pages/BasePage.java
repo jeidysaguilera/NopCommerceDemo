@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.swing.*;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class BasePage {
 
@@ -46,8 +48,17 @@ public class BasePage {
     }
 
     //cerrar el navegador
-    public void closeBrowser(){
+    public void quitBrowser(){
        driver.quit();
+    }
+
+    public void closeBrowser(){
+        driver.close();
+    }
+
+    //titulo de la pagina actual
+    public String Title(){
+      return driver.getTitle();
     }
 
     //metodo privado de un webElement para esperar por la presencia del elemento y evitar poner esperas mas veces
@@ -210,5 +221,32 @@ public class BasePage {
         driver.switchTo().alert().accept();
     }
 
+///////////////////////////                Multiples Ventanas en el Browser               //////////////////////////////////////
+
+//me devuelve un arreglo de IDs de windows browser
+    public List<String> WindowIdList(){
+
+        Set<String> windows=driver.getWindowHandles();
+        List<String>lista=new ArrayList(windows);
+
+        return lista;
+    }
+        //me devuelve el id de un eleemnto de la lista segun su index
+      public  String IdWindowBrowser(int index){
+            Set<String> windows=driver.getWindowHandles();
+            List<String>lista=new ArrayList(windows);
+
+             return lista.get(index);
+
+    }
+
+    public void SwitchToWindows(int index){
+
+        Set<String> windows=driver.getWindowHandles();
+        List<String>lista=new ArrayList(windows);
+
+        driver.switchTo().window(lista.get(index));
+
+    }
 
 }

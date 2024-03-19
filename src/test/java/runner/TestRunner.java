@@ -8,9 +8,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(
-        features="src/test/resources/features",
+        features="src/test/java/features",
         glue= {"steps"},
-        monochrome=true,
+       // monochrome=true,
+       tags = "@Smoke",
         plugin= {"json:target/cucumber.json"}
 )
 
