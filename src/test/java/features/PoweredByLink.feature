@@ -1,5 +1,5 @@
 Feature: Windows Handle
- @Smoke
+
   Scenario: Link para abrir una segunda Ventana
 
     Given voy en la pagina de NoCommerce

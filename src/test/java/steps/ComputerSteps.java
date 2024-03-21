@@ -56,4 +56,9 @@ public class ComputerSteps {
     public void verifico_con_la_cantidad_actual() {
 
     }
+
+    @And("Obtengo el producto y el precio del primer elemento de la tabla")
+    public void obtengoElProductoYElPrecioDelPrimerElementoDeLaTabla() {
+
+    }
 }

@@ -65,6 +65,9 @@ public class BasePage {
     private WebElement Find(By locator){
        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
+   /* private WebElement FindS(String locator){
+        return driver.findElement(By.xpath(locator));
+    }*/
 
     //clic en un elemnto que ya fue pasado por el find declarado arriba
     public void clicElement(By locator){
@@ -85,7 +88,7 @@ public class BasePage {
 
    // texto de un elemento
     public String textFromElement(By locator){
-       return Find(locator).getText();
+       return driver.findElement(locator).getText();
     }
 
     //elemento habilitado
@@ -116,6 +119,17 @@ public class BasePage {
         List<WebElement>lista=driver.findElements(locator);
 
         lista.get(index).click();
+    }
+
+    //da clic a todos los elementos de la lista
+    public void clicToAllElements(By locator) throws InterruptedException {
+
+        List<WebElement>lista=driver.findElements(locator);
+
+        for (WebElement webElement : lista) {
+            webElement.click();
+            Thread.sleep(4000);
+        }
     }
 
     //selecciona un elemento de lista WebElement seggun su texto
@@ -190,10 +204,11 @@ public class BasePage {
 
 
     // devuelve un texto de un valor dentro de la tabla
-/*
-    public String getValueFromTable(By locator,int row, int colum){
-       String celdaINed= locator+"/table/tbody/tr["+row+"]/td["+colum+"]";
-       return Find(celdaINed).getText();
+
+   /* public String getValueFromTable(By locator,int row, int colum){
+
+       String celdaINed= locator+"tbody/tr["+row+"]/td["+colum+"]";
+       return FindS(celdaINed).getText();
     }
 */
 
